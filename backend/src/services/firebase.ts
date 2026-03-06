@@ -8,10 +8,11 @@ const USE_MOCK = process.env.NODE_ENV !== 'production' && !process.env.FIREBASE_
 if (!USE_MOCK) {
   try {
     admin.initializeApp({
-      credential: admin.credential.applicationDefault(),
+      projectId: process.env.FIREBASE_PROJECT_ID,
     });
+    console.log(`✅ Firebase conectado ao projeto: ${process.env.FIREBASE_PROJECT_ID}`);
   } catch (err) {
-    console.warn('Firebase connection failed, using mock mode.', err);
+    console.warn('⚠️ Falha ao conectar no Firebase real, usando modo mock.', err);
   }
 }
 

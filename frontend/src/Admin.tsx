@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 interface Winner {
@@ -9,7 +9,7 @@ interface Winner {
   redeemed: boolean;
 }
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = '/api';
 
 export function Admin() {
   const [winners, setWinners] = useState<Winner[]>([]);
