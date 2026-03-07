@@ -1,12 +1,13 @@
 :root {
+  --coffee-deep: #1A0F0A;
   --coffee-dark: #2C1B12;
   --coffee-medium: #4E342E;
+  --coffee-amber: #6F4E37;
   --gold: #D4AF37;
-  --gold-light: #F9F295;
-  --gold-dark: #B8860B;
-  --cream: #F5F5DC;
+  --gold-bright: #F9F295;
+  --gold-deep: #B8860B;
+  --cream: #FDF5E6;
   --white: #FFFFFF;
-  --shadow: rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -29,7 +30,7 @@ body {
 .container {
   width: 100%;
   max-width: 480px;
-  padding: 40px 20px;
+  padding: 5px 20px 40px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -37,45 +38,44 @@ body {
 }
 
 .logo {
-  font-size: 50px;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 0 10px var(--gold));
+  font-size: 80px;
+  margin-bottom: 0px;
+  filter: drop-shadow(0 0 15px var(--gold));
+  line-height: 1;
 }
 
 .title {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 800;
   color: var(--gold);
   text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 5px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  letter-spacing: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
 }
 
 .subtitle {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--cream);
-  font-style: italic;
-  opacity: 0.9;
-  margin-bottom: 40px;
+  font-weight: 400;
   letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 25px;
 }
 
-.error-card {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 30px;
-  border-radius: 20px;
-  border: 1px solid var(--coffee-medium);
-  margin-top: 20px;
+.no-subtitle-spacer {
+  height: 25px;
 }
 
-/* ROULETTE STYLES */
+/* ROULETTE */
 .rouletteWrapper {
   position: relative;
   width: 320px;
   height: 320px;
   padding: 12px;
-  background: linear-gradient(145deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
+  background: linear-gradient(145deg, var(--gold-deep), var(--gold-bright), var(--gold-deep));
   border-radius: 50%;
   box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,0,0,0.5);
 }
@@ -96,29 +96,25 @@ body {
   top: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 30px;
-  height: 40px;
+  width: 35px;
+  height: 45px;
   z-index: 20;
-  filter: drop-shadow(0 4px 5px rgba(0,0,0,0.5));
 }
 
 .pointer::after {
   content: '';
   display: block;
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 30px solid var(--gold-light);
+  width: 0; height: 0;
+  border-left: 17.5px solid transparent;
+  border-right: 17.5px solid transparent;
+  border-top: 35px solid var(--gold-bright);
 }
 
 .centerLogo {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 65px;
-  height: 65px;
+  width: 80px; height: 80px;
   background: radial-gradient(circle, var(--coffee-medium), var(--coffee-dark));
   border: 2px solid var(--gold);
   border-radius: 50%;
@@ -126,61 +122,64 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 10;
-  box-shadow: 0 0 15px rgba(0,0,0,0.8);
+  box-shadow: 0 0 20px rgba(0,0,0,0.9);
 }
 
 .centerLogo span {
-  font-size: 28px;
+  font-size: 35px;
 }
 
+/* BUTTONS */
 .spinButton {
-  margin-top: 40px;
-  padding: 16px 40px;
-  font-size: 18px;
-  font-weight: bold;
+  margin-top: 35px;
+  padding: 16px 55px;
+  font-size: 22px;
+  font-weight: 900;
   letter-spacing: 2px;
   text-transform: uppercase;
-  background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
-  color: var(--coffee-dark);
-  border: none;
-  border-radius: 50px;
+  background: linear-gradient(to bottom, var(--gold-bright), var(--gold-deep));
+  color: var(--coffee-deep);
+  border: 2px solid var(--coffee-deep);
+  border-radius: 55px;
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
 
 .spinButton.share {
-  background: #25D366; /* WhatsApp Color */
-  color: white;
+  background: #25D366;
+  color: var(--coffee-deep);
   width: 100%;
   margin-top: 20px;
+  font-weight: 800;
+  padding: 18px 20px;
+  font-size: 16px;
+  display: flex; /* Alinhamento central perfeito */
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
-.spinButton:hover:not(:disabled) {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
+.pulse-animation {
+  animation: luxuryPulse 2s infinite;
 }
 
-.spinButton:disabled {
-  background: #555;
-  color: #888;
-  cursor: not-allowed;
-  box-shadow: none;
+@keyframes luxuryPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+  50% { transform: scale(1.05); box-shadow: 0 0 25px 10px rgba(249, 242, 149, 0.5); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
 }
 
-/* MODAL LUXO */
+/* MODAL / TICKET */
 .modalOverlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.9);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.92);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 100;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 }
 
 .modalContent {
@@ -204,26 +203,43 @@ body {
 }
 
 .ticket-info strong {
-  color: var(--gold-light);
+  color: var(--gold-bright);
   font-family: monospace;
   font-size: 18px;
 }
 
-.prizeTitle {
-  font-size: 24px;
-  margin: 15px 0;
-  color: var(--gold-light);
-  font-weight: bold;
+.prizeDescription {
+  font-size: 17px; /* Aumentado de 14px */
+  line-height: 1.5;
+  margin-top: 15px;
+  font-weight: 500;
 }
 
 .couponCode {
   display: block;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 15px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 8px 15px;
   border: 1px dashed var(--gold);
-  margin: 20px 0;
+  margin: 20px auto;
   font-family: 'Courier New', monospace;
-  font-size: 26px;
-  letter-spacing: 4px;
+  font-size: 18px; /* Reduzido de 26px */
+  letter-spacing: 3px;
   color: var(--gold);
+  width: fit-content;
 }
+
+/* ADMIN (Mantido Verdana) */
+.admin-container {
+  font-family: 'Verdana', sans-serif !important;
+  max-width: 1000px !important;
+  padding-top: 30px;
+}
+.admin-container * { font-family: 'Verdana', sans-serif !important; }
+.admin-tabs { display: flex; width: 100%; border-bottom: 1px solid var(--gold); margin-bottom: 20px; }
+.tab-btn { flex: 1; padding: 12px; background: transparent; border: none; color: var(--cream); cursor: pointer; font-weight: bold; font-size: 12px; }
+.tab-btn.active { color: var(--gold); border-bottom: 2px solid var(--gold); }
+.admin-table { width: 100%; border-collapse: collapse; font-size: 13px; background: rgba(0,0,0,0.2); }
+.admin-table td, .admin-table th { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; }
+.form-group { margin-bottom: 15px; text-align: left; }
+.form-group label { font-size: 11px; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 5px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; background: #111; border: 1px solid #333; color: white; border-radius: 5px; }
